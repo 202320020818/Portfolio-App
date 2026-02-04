@@ -60,7 +60,7 @@
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
   --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(78.215% 0.1321 184.367);
+  --accent: oklch(69.49% 0.11606 173.814);
   --accent-foreground: oklch(0.208 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.929 0.013 255.508);
@@ -122,4 +122,20 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.h1 {
+  @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
+}
+
+.h2 {
+  @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
+}
+
+.h3 {
+  @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
+}
+
+body {
+  @apply font-mono;
 }
