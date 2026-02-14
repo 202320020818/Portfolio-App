@@ -22,13 +22,16 @@ const Home = () => {
             </p>
             {/* Button and socials*/}
             <div className="mt-5 flex flex-col xl:flex-row items-center gap-8">
-              <Button
-                variant="outline"
-                className="uppercase flex items-center gap-2 text-sm"
-              >
-                <span>Download CV</span>
-                <FiDownload className="text-xl" />
-              </Button>
+              <a href="/Eshan_Harshana_CV.pdf" download>
+                <Button
+                  variant="outline"
+                  className="uppercase flex items-center gap-2 text-sm"
+                >
+                  <span>Download CV</span>
+                  <FiDownload className="text-xl" />
+                </Button>
+              </a>
+
               <div className="mb-8 xl:mb-0">
                 <Social
                   containerStyles="flex gap-6 "
