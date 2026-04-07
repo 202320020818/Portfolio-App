@@ -1,128 +1,246 @@
 "use client";
 
-import { BsArrowDownRight } from "react-icons/bs";
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { BsArrowUpRight, BsGithub } from "react-icons/bs";
+
+const githubProfile = "https://github.com/202320020818";
 
 const services = [
   {
     num: "01",
     title: "Front-End Development",
     description:
-      "Building responsive and interactive user interfaces using modern web technologies like React, HTML, and CSS.",
-    href: "",
+      "Building polished, responsive interfaces with React, Next.js, HTML, CSS, and modern interaction design.",
+    github: "https://github.com/202320020818/sleep-tracker-next-2",
+    image: "/assets/front2.png",
+    stack: ["React", "Next.js", "Tailwind"],
+    highlights: ["Responsive layouts", "Interactive UI", "Modern component design"],
   },
   {
     num: "02",
     title: "UI/UX Design",
     description:
-      "Designing user-friendly and visually appealing interfaces with a focus on usability and user experience.",
-    href: "",
+      "Designing clean, user-focused interfaces that balance usability, clarity, and visual identity.",
+    github: "https://github.com/202320020818/Mobile_App_UI_figma-4",
+    image: "/assets/UIUX.png",
+    stack: ["Wireframing", "Visual Design", "User Flows"],
+    highlights: ["User-centered thinking", "Visual hierarchy", "Smooth experiences"],
   },
   {
     num: "03",
-    title: "Back-End Web Development",
+    title: "Back-End Development",
     description:
-      "Developing secure and scalable server-side applications, APIs, and database systems.",
-    href: "",
+      "Creating secure server-side logic, APIs, authentication flows, and database-driven systems for scalable apps.",
+    github: "https://github.com/202320020818/Fruit-and-sweets_Only_my_Part-1",
+    image: "/assets/backend.png",
+    stack: ["Node.js", "Express", "MongoDB"],
+    highlights: ["REST APIs", "Authentication", "Database integration"],
   },
   {
     num: "04",
     title: "Web Development",
     description:
-      "Creating complete web applications from front-end to back-end with modern frameworks and tools.",
-    href: "",
+      "Delivering complete web applications from concept to deployment with modern tools and production-ready structure.",
+    github: "https://github.com/202320020818/sleep-tracker-next-2",
+    image: "/assets/development.png",
+    stack: ["Frontend", "Backend", "Deployment"],
+    highlights: ["End-to-end builds", "Fast performance", "Practical solutions"],
   },
   {
     num: "05",
     title: "Project Management",
     description:
-      "Planning, organizing, and managing projects efficiently to deliver results on time.",
-    href: "",
+      "Organizing features, timelines, and collaboration so projects move clearly and efficiently from idea to delivery.",
+    github: "https://github.com/202320020818",
+    image: "/assets/projectM2.png",
+    stack: ["Planning", "Coordination", "Delivery"],
+    highlights: ["Clear milestones", "Task ownership", "Reliable execution"],
   },
   {
     num: "06",
     title: "Full-Stack Development",
     description:
-      "Handling both front-end and back-end development to build fully functional web applications.",
-    href: "",
+      "Handling both client and server layers to build complete applications that are functional, scalable, and user-friendly.",
+    github: "https://github.com/202320020818/ai-image-editor-saas-app-9",
+    image: "/assets/full.png",
+    stack: ["Next.js", "Node.js", "SQL"],
+    highlights: ["Integrated systems", "Clean architecture", "Production mindset"],
   },
   {
     num: "07",
     title: "Software Engineering",
     description:
-      "Applying engineering principles to design, develop, and maintain high-quality software systems.",
-    href: "",
+      "Applying engineering principles to build maintainable software with clean structure, testing awareness, and long-term quality.",
+    github: "https://github.com/202320020818/Portfolio-App",
+    image: "/assets/software.png",
+    stack: ["Architecture", "Maintainability", "Quality"],
+    highlights: ["Structured code", "Reliable patterns", "Scalable thinking"],
   },
   {
     num: "08",
-    title: "IT Related",
+    title: "Mobile App Development",
     description:
-      "General IT skills including troubleshooting, system management, and technology solutions.",
-    href: "",
+      "Building efficient Android experiences with Kotlin and mobile-first thinking focused on performance and usability.",
+    github: "https://github.com/202320020818/Finance_Tracker-3",
+    image: "/assets/mobile.jpg",
+    stack: ["Kotlin", "Android", "Mobile UI"],
+    highlights: ["Android apps", "Practical flows", "Smooth mobile UX"],
   },
   {
     num: "09",
-    title: "Mobile App Development",
+    title: "Data Science Related",
     description:
-      "Developing user-friendly and efficient mobile applications using modern technologies like Kotlin and Android.",
-    href: "",
+      "Exploring data analysis, insight extraction, and predictive thinking using programming and analytical workflows.",
+    github: "https://github.com/202320020818",
+    image: "/assets/PowerBI.png",
+    stack: ["Python", "Data Analysis", "ML Basics"],
+    highlights: ["Insight discovery", "Pattern analysis", "Model experimentation"],
   },
   {
     num: "10",
-    title: "Data Science",
+    title: "IT Related",
     description:
-      "Analyzing data to extract insights and build predictive models using tools like Python, R, and machine learning techniques.",
-    href: "",
+      "Supporting broader IT needs including troubleshooting, tool setup, system understanding, and practical tech problem-solving.",
+    github: "https://github.com/202320020818/Spring_java_7",
+    showGithub: false,
+    image: "/assets/IT.png",
+    stack: ["Troubleshooting", "Support", "Systems"],
+    highlights: ["Technical support", "System setup", "Problem resolution"],
   },
 ];
 
 const Services = () => {
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            transition: { delay: 0.3, duration: 0.6 },
-          }}
-          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-8 md:gap-10 xl:gap-14"
-        >
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="flex flex-col justify-between gap-5 p-5 sm:p-6 rounded-2xl border border-white/10 hover:border-accent transition-all duration-500 group bg-white/5 backdrop-blur-sm hover:shadow-lg"
-            >
-              {/* top */}
-              <div className="flex justify-between items-center">
-                <div className="text-3xl sm:text-4xl xl:text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500">
-                  {service.num}
-                </div>
+    <section className="relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(56,180,151,0.22),_transparent_26%),radial-gradient(circle_at_bottom_right,_rgba(255,255,255,0.08),_transparent_22%)]" />
 
-                <Link
-                  href={service.href}
-                  className="w-[45px] h-[45px] sm:w-[55px] sm:h-[55px] xl:w-[65px] xl:h-[65px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
-                >
-                  <BsArrowDownRight className="text-primary text-xl sm:text-2xl" />
-                </Link>
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="rounded-[36px] border border-white/10 bg-[#0f1219]/85 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8"
+        >
+          <div className="grid gap-8 border-b border-white/10 pb-8 xl:grid-cols-[1.1fr_0.9fr] xl:items-end">
+            <div>
+              <p className="text-sm uppercase tracking-[0.35em] text-accent/80">
+                Services
+              </p>
+              <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-5xl">
+                Beautiful service cards with
+                <span className="block text-accent">real work showcase</span>
+              </h1>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-white/70">
+                This section now highlights what you do, links visitors to your
+                GitHub, and gives space to show screenshots or photos from the
+                projects related to each service.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-[28px] border border-white/10 bg-white/5 p-5">
+                <p className="text-xs uppercase tracking-[0.3em] text-accent/80">
+                  Portfolio Link
+                </p>
+                <p className="mt-3 text-lg font-semibold text-white">
+                  GitHub Profile Connected
+                </p>
+                <p className="mt-2 text-sm leading-7 text-white/65">
+                  Every action button now navigates to your GitHub profile.
+                </p>
               </div>
 
-              {/* title */}
-              <h2 className="text-xl sm:text-2xl md:text-3xl xl:text-[34px] font-bold leading-snug text-white group-hover:text-accent transition-all duration-500">
-                {service.title}
-              </h2>
-
-              {/* description */}
-              <p className="text-sm sm:text-base text-white/60 leading-relaxed">
-                {service.description}
-              </p>
-
-              {/* border */}
-              <div className="border-b border-white/10 w-full"></div>
+              <div className="rounded-[28px] border border-accent/25 bg-accent/10 p-5">
+                <p className="text-xs uppercase tracking-[0.3em] text-accent/90">
+                  Showcase Ready
+                </p>
+                <p className="mt-3 text-lg font-semibold text-white">
+                  Add your project screenshots
+                </p>
+                <p className="mt-2 text-sm leading-7 text-white/70">
+                  Replace the preview images later with real screenshots from
+                  your work for each service.
+                </p>
+              </div>
             </div>
-          ))}
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {services.map((service, index) => (
+              <motion.article
+                key={service.num}
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.08 * index, duration: 0.45 }}
+                className="group overflow-hidden rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.04))] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-500 hover:-translate-y-1 hover:border-accent/45 hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.09),rgba(255,255,255,0.05))] hover:shadow-[0_20px_60px_rgba(56,180,151,0.12)]"
+              >
+                <div className="relative h-40 overflow-hidden border-b border-white/10">
+                  <Image
+                    src={service.image}
+                    alt={`${service.title} preview`}
+                    fill
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d12]/55 via-[#0f1219]/20 to-transparent" />
+                  <div className="absolute left-4 top-4 inline-flex rounded-full border border-white/15 bg-black/35 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-white/80 backdrop-blur-sm">
+                    {service.num}
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+                    <div className="max-w-[calc(100%-4.5rem)] rounded-2xl border border-white/12 bg-black/18 px-4 py-2.5 backdrop-blur-sm">
+                      <p className="text-[10px] uppercase tracking-[0.28em] text-accent/80">
+                        Work Preview
+                      </p>
+                      <h2 className="mt-1.5 line-clamp-2 text-[1.25rem] font-semibold leading-tight text-white">
+                        {service.title}
+                      </h2>
+                    </div>
+
+                    <Link
+                      href={service.github || githubProfile}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/95 text-black shadow-[0_10px_30px_rgba(0,0,0,0.2)] transition-all duration-300 hover:scale-105 hover:border-accent hover:bg-accent"
+                    >
+                      <BsArrowUpRight className="text-lg" />
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="p-4">
+                  <p className="line-clamp-2 text-sm leading-6 text-white/66">
+                    {service.description}
+                  </p>
+
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {service.stack.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-white/12 bg-white/[0.03] px-3 py-1 text-[11px] font-medium text-white/76"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  {service.showGithub !== false && (
+                    <div className="mt-4 border-t border-white/10 pt-3">
+                      <Link
+                        href={service.github || githubProfile}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex w-fit items-center gap-2.5 rounded-full border border-accent/35 bg-accent/10 px-4 py-2 text-sm font-medium text-accent transition-all duration-300 hover:border-accent hover:bg-accent hover:text-black"
+                      >
+                        <BsGithub className="text-sm" />
+                        View on GitHub
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </motion.article>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
