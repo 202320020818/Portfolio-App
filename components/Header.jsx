@@ -6,11 +6,11 @@ import MobileNav from "./ui/MobileNav";
 
 const Header = () => {
   return (
-    <header className="py-8 xl:py-12 text-white">
-      <div className="container mx-auto flex justify-between items-center">
+    <header className="py-3 sm:py-4 xl:py-5 text-white">
+      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* logo */}
         <Link href="/">
-          <h1 className="text-4xl font-semibold">
+          <h1 className="text-3xl font-semibold sm:text-4xl">
             Eshan<span className="text-accent">.</span>
           </h1>
         </Link>

@@ -31,7 +31,7 @@ const MobileNav = () => {
         {/* That icon is called a hamburger menu icon 🍔-> mobile part expand part 3 line  */}
       </SheetTrigger>
 
-      <SheetContent className="flex flex-col">
+      <SheetContent className="flex flex-col px-6">
         {/* REQUIRED accessibility elements (hidden) */}
         <VisuallyHidden>
           <SheetTitle>Mobile Navigation</SheetTitle>
@@ -41,7 +41,7 @@ const MobileNav = () => {
         </VisuallyHidden>
 
         {/* logo */}
-        <div className="mt-32 mb-40 text-center text-2xl">
+        <div className="mb-16 mt-20 text-center text-2xl sm:mb-24 sm:mt-24">
           <Link href="/">
             <h1>
               Eshan <span className="text-accent">.</span>
@@ -50,7 +50,7 @@ const MobileNav = () => {
         </div>
 
         {/* nav */}
-        <nav className="flex flex-col justify-center items-center gap-8">
+        <nav className="flex flex-col items-center justify-center gap-6 sm:gap-8">
           {links.map((link) => (
             <Link
               key={link.path}

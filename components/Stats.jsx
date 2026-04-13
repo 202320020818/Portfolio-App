@@ -24,12 +24,12 @@ const stats = [
 const Stats = () => {
   return (
     <section className="bg-primary text-white">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div className="mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 2xl:px-12">
+        <div className="grid grid-cols-1 gap-6 text-center sm:grid-cols-2 md:grid-cols-4 xl:gap-8">
           {stats.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center p-4 rounded-lg transition-all duration-300 hover:text-accent hover:scale-105"
+              className="flex flex-col items-center rounded-lg p-2 transition-all duration-300 hover:scale-105 hover:text-accent xl:p-4"
             >
               <CountUp
                 end={item.num}

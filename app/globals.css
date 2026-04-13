@@ -79,6 +79,7 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  scrollbar-color: #7b7b7b rgb(28, 27, 34);
 }
 
 .dark {
@@ -125,7 +126,7 @@
 }
 
 .h1 {
-  @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
+  @apply text-[42px] sm:text-[52px] lg:text-[66px] xl:text-[80px] 2xl:text-[96px] leading-[1] font-semibold;
 }
 
 .h2 {
@@ -138,4 +139,27 @@
 
 body {
   @apply font-mono;
+}
+
+html,
+body {
+  background-color: rgb(28, 27, 34);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(28, 27, 34);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.38);
+  border-radius: 9999px;
+  border: 2px solid rgb(28, 27, 34);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.52);
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const sections = [
   { id: "about", label: "About Me", eyebrow: "Profile Overview" },
@@ -60,13 +61,29 @@ export default function Resume() {
   const activeSectionData =
     sections.find((section) => section.id === activeSection) || sections[0];
 
+  const sectionMotion = {
+    initial: { opacity: 0, y: 18 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -12 },
+    transition: { duration: 0.35, ease: "easeOut" },
+  };
+
   return (
     <section className="relative overflow-hidden px-4 py-8 text-white sm:px-6 lg:px-8">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(56,180,151,0.22),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(255,255,255,0.08),_transparent_25%)]" />
 
       <div className="mx-auto grid max-w-7xl gap-6 xl:grid-cols-[360px_minmax(0,1fr)]">
-        <aside className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl">
-          <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-accent/20 blur-3xl" />
+        <motion.aside
+          initial={{ opacity: 0, x: -24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+        >
+          <motion.div
+            animate={{ x: [0, 12, 0], y: [0, -10, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute right-0 top-0 h-32 w-32 rounded-full bg-accent/20 blur-3xl"
+          />
 
           <div className="relative space-y-8">
             <div>
@@ -86,19 +103,23 @@ export default function Resume() {
 
             <div className="grid gap-3 sm:grid-cols-3 xl:grid-cols-1">
               {stats.map((item) => (
-                <div
+                <motion.div
                   key={item.label}
+                  whileHover={{ y: -4, scale: 1.01 }}
                   className="rounded-2xl border border-white/10 bg-black/20 p-4"
                 >
                   <p className="text-2xl font-semibold text-accent">
                     {item.value}
                   </p>
                   <p className="mt-1 text-sm text-white/65">{item.label}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
 
-            <div className="rounded-3xl border border-accent/25 bg-accent/10 p-5">
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="rounded-3xl border border-accent/25 bg-accent/10 p-5"
+            >
               <p className="text-xs uppercase tracking-[0.3em] text-accent/80">
                 Core Strengths
               </p>
@@ -110,15 +131,16 @@ export default function Resume() {
                   "Full-Stack Apps",
                   "Continuous Learning",
                 ].map((tag) => (
-                  <span
+                  <motion.span
                     key={tag}
+                    whileHover={{ y: -2 }}
                     className="rounded-full border border-white/10 bg-white/8 px-3 py-2 text-xs text-white/80"
                   >
                     {tag}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             <div className="border-t border-white/10 pt-5 text-sm text-white/60">
               <p>Based in Sri Lanka</p>
@@ -128,9 +150,14 @@ export default function Resume() {
               </p>
             </div>
           </div>
-        </aside>
+        </motion.aside>
 
-        <div className="rounded-[32px] border border-white/10 bg-[#11131a]/85 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-6">
+        <motion.div
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.55, ease: "easeOut", delay: 0.08 }}
+          className="rounded-[32px] border border-white/10 bg-[#11131a]/85 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-6"
+        >
           <div className="flex flex-col gap-5 border-b border-white/10 pb-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-accent/80">
@@ -146,9 +173,11 @@ export default function Resume() {
                 const isActive = activeSection === section.id;
 
                 return (
-                  <button
+                  <motion.button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
+                    whileHover={{ y: -3 }}
+                    whileTap={{ scale: 0.98 }}
                     className={`rounded-2xl border px-5 py-4 text-left transition-all duration-300 ${
                       isActive
                         ? "border-accent bg-accent text-black shadow-[0_12px_30px_rgba(56,180,151,0.35)]"
@@ -161,121 +190,144 @@ export default function Resume() {
                     <span className="mt-2 block text-base font-semibold">
                       {section.label}
                     </span>
-                  </button>
+                  </motion.button>
                 );
               })}
             </div>
           </div>
 
           <div className="pt-6">
-            {activeSection === "about" && (
-              <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_320px]">
-                <div className="space-y-5 rounded-[28px] border border-white/10 bg-white/5 p-6">
-                  <p className="text-base leading-8 text-white/75">
-                    I am Eshan Harshana, a motivated, disciplined, and
-                    responsible Information Technology undergraduate at SLIIT. I
-                    enjoy learning new technologies, taking on challenges, and
-                    continuously improving myself both personally and
-                    professionally.
-                  </p>
-                  <p className="text-base leading-8 text-white/75">
-                    I stay calm under pressure and love transforming ideas into
-                    practical digital solutions. My goal is to build systems
-                    that are efficient, scalable, and genuinely enjoyable for
-                    people to use.
-                  </p>
-                  <p className="text-base leading-8 text-white/75">
-                    I have hands-on experience with web and mobile development,
-                    full-stack architecture, authentication flows, CRUD
-                    operations, and REST API integration, always with a focus on
-                    clean and maintainable code.
-                  </p>
-                </div>
-
-                <div className="rounded-[28px] border border-white/10 bg-gradient-to-br from-accent/20 via-white/5 to-transparent p-6">
-                  <p className="text-xs uppercase tracking-[0.3em] text-accent/80">
-                    Snapshot
-                  </p>
-                  <div className="mt-6 space-y-4">
-                    {[
-                      ["Role", "Software Developer"],
-                      ["Degree", "BSc (Hons) IT"],
-                      ["Focus", "Web and Mobile Apps"],
-                      ["Approach", "Elegant + Practical"],
-                    ].map(([label, value]) => (
-                      <div
-                        key={label}
-                        className="rounded-2xl border border-white/10 bg-black/20 p-4"
-                      >
-                        <p className="text-xs uppercase tracking-[0.25em] text-white/45">
-                          {label}
-                        </p>
-                        <p className="mt-2 text-lg font-semibold text-white">
-                          {value}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {activeSection === "education" && (
-              <div className="space-y-5">
-                {educationItems.map((item, index) => (
-                  <div
-                    key={`${item.title}-${item.period}`}
-                    className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:border-accent/40 hover:bg-white/7"
+            <AnimatePresence mode="wait">
+              {activeSection === "about" && (
+                <motion.div
+                  key="about"
+                  {...sectionMotion}
+                  className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_320px]"
+                >
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    className="space-y-5 rounded-[28px] border border-white/10 bg-white/5 p-6"
                   >
-                    <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-accent to-transparent" />
-                    <div className="flex flex-col gap-4 pl-4 md:flex-row md:items-start md:justify-between">
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.3em] text-accent/80">
-                          Step 0{index + 1}
-                        </p>
-                        <h3 className="mt-3 text-2xl font-semibold text-white">
-                          {item.title}
-                        </h3>
-                        <p className="mt-2 text-white/65">{item.subtitle}</p>
-                      </div>
-                      <div className="rounded-full border border-white/10 bg-black/20 px-4 py-2 text-sm text-white/75">
-                        {item.period}
-                      </div>
-                    </div>
-                    <p className="mt-4 pl-4 text-base leading-7 text-white/72">
-                      {item.detail}
+                    <p className="text-base leading-8 text-white/75">
+                      I am Eshan Harshana, an Information Technology
+                      undergraduate at SLIIT with a disciplined and responsible
+                      mindset.
                     </p>
-                  </div>
-                ))}
-              </div>
-            )}
+                    <p className="text-base leading-8 text-white/75">
+                      I enjoy learning new technologies, solving challenges, and
+                      turning ideas into practical digital solutions.
+                    </p>
+                    <p className="text-base leading-8 text-white/75">
+                      My focus includes web and mobile development, full-stack
+                      systems, CRUD flows, auth, and REST APIs with clean code.
+                    </p>
+                  </motion.div>
 
-            {activeSection === "skills" && (
-              <div className="grid gap-5 xl:grid-cols-2">
-                {skillGroups.map((group) => (
-                  <div
-                    key={group.title}
-                    className="rounded-[28px] border border-white/10 bg-white/5 p-6"
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    className="rounded-[28px] border border-white/10 bg-gradient-to-br from-accent/20 via-white/5 to-transparent p-6"
                   >
                     <p className="text-xs uppercase tracking-[0.3em] text-accent/80">
-                      {group.title}
+                      Snapshot
                     </p>
-                    <div className="mt-5 flex flex-wrap gap-3">
-                      {group.items.map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-sm font-medium text-white/85 transition duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-accent hover:text-black"
+                    <div className="mt-6 space-y-4">
+                      {[
+                        ["Role", "Software Developer"],
+                        ["Degree", "BSc (Hons) IT"],
+                        ["Focus", "Web and Mobile Apps"],
+                        ["Approach", "Elegant + Practical"],
+                      ].map(([label, value], index) => (
+                        <motion.div
+                          key={label}
+                          initial={{ opacity: 0, x: 12 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.08 * index, duration: 0.35 }}
+                          whileHover={{ x: 4 }}
+                          className="rounded-2xl border border-white/10 bg-black/20 p-4"
                         >
-                          {tech}
-                        </span>
+                          <p className="text-xs uppercase tracking-[0.25em] text-white/45">
+                            {label}
+                          </p>
+                          <p className="mt-2 text-lg font-semibold text-white">
+                            {value}
+                          </p>
+                        </motion.div>
                       ))}
                     </div>
-                  </div>
-                ))}
-              </div>
-            )}
+                  </motion.div>
+                </motion.div>
+              )}
+
+              {activeSection === "education" && (
+                <motion.div key="education" {...sectionMotion} className="space-y-5">
+                  {educationItems.map((item, index) => (
+                    <motion.div
+                      key={`${item.title}-${item.period}`}
+                      initial={{ opacity: 0, y: 18 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.08, duration: 0.35 }}
+                      whileHover={{ y: -5 }}
+                      className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:border-accent/40 hover:bg-white/7"
+                    >
+                      <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-accent to-transparent" />
+                      <div className="flex flex-col gap-4 pl-4 md:flex-row md:items-start md:justify-between">
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.3em] text-accent/80">
+                            Step 0{index + 1}
+                          </p>
+                          <h3 className="mt-3 text-2xl font-semibold text-white">
+                            {item.title}
+                          </h3>
+                          <p className="mt-2 text-white/65">{item.subtitle}</p>
+                        </div>
+                        <div className="rounded-full border border-white/10 bg-black/20 px-4 py-2 text-sm text-white/75">
+                          {item.period}
+                        </div>
+                      </div>
+                      <p className="mt-4 pl-4 text-base leading-7 text-white/72">
+                        {item.detail}
+                      </p>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+
+              {activeSection === "skills" && (
+                <motion.div
+                  key="skills"
+                  {...sectionMotion}
+                  className="grid gap-5 xl:grid-cols-2"
+                >
+                  {skillGroups.map((group, index) => (
+                    <motion.div
+                      key={group.title}
+                      initial={{ opacity: 0, y: 18 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.08, duration: 0.35 }}
+                      whileHover={{ y: -4 }}
+                      className="rounded-[28px] border border-white/10 bg-white/5 p-6"
+                    >
+                      <p className="text-xs uppercase tracking-[0.3em] text-accent/80">
+                        {group.title}
+                      </p>
+                      <div className="mt-5 flex flex-wrap gap-3">
+                        {group.items.map((tech) => (
+                          <motion.span
+                            key={tech}
+                            whileHover={{ y: -3 }}
+                            className="rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-sm font-medium text-white/85 transition duration-300 hover:border-accent/40 hover:bg-accent hover:text-black"
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

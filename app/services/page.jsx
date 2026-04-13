@@ -111,6 +111,24 @@ const services = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: "easeOut" },
+  },
+};
+
 const Services = () => {
   return (
     <section className="relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8">
@@ -121,26 +139,61 @@ const Services = () => {
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="rounded-[36px] border border-white/10 bg-[#0f1219]/85 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8"
+          className="relative rounded-[36px] border border-white/10 bg-[#0f1219]/85 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8"
         >
+          <motion.div
+            animate={{ x: [0, 20, 0], y: [0, -14, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="pointer-events-none absolute right-12 top-10 h-24 w-24 rounded-full bg-accent/10 blur-3xl"
+          />
+          <motion.div
+            animate={{ x: [0, -18, 0], y: [0, 16, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+            className="pointer-events-none absolute bottom-10 left-10 h-28 w-28 rounded-full bg-white/5 blur-3xl"
+          />
+
           <div className="grid gap-8 border-b border-white/10 pb-8 xl:grid-cols-[1.1fr_0.9fr] xl:items-end">
             <div>
-              <p className="text-sm uppercase tracking-[0.35em] text-accent/80">
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.4 }}
+                className="text-sm uppercase tracking-[0.35em] text-accent/80"
+              >
                 Services
-              </p>
-              <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-5xl">
+              </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.16, duration: 0.55 }}
+                className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-5xl"
+              >
                 Beautiful service cards with
-                <span className="block text-accent">real work showcase</span>
-              </h1>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-white/70">
+                <motion.span
+                  animate={{ opacity: [0.75, 1, 0.75] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="block text-accent"
+                >
+                  real work showcase
+                </motion.span>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.24, duration: 0.55 }}
+                className="mt-5 max-w-2xl text-base leading-8 text-white/70"
+              >
                 This section now highlights what you do, links visitors to your
                 GitHub, and gives space to show screenshots or photos from the
                 projects related to each service.
-              </p>
+              </motion.p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[28px] border border-white/10 bg-white/5 p-5">
+              <motion.div
+                whileHover={{ y: -6, scale: 1.01 }}
+                className="rounded-[28px] border border-white/10 bg-white/5 p-5"
+              >
                 <p className="text-xs uppercase tracking-[0.3em] text-accent/80">
                   Portfolio Link
                 </p>
@@ -150,9 +203,12 @@ const Services = () => {
                 <p className="mt-2 text-sm leading-7 text-white/65">
                   Every action button now navigates to your GitHub profile.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="rounded-[28px] border border-accent/25 bg-accent/10 p-5">
+              <motion.div
+                whileHover={{ y: -6, scale: 1.01 }}
+                className="rounded-[28px] border border-accent/25 bg-accent/10 p-5"
+              >
                 <p className="text-xs uppercase tracking-[0.3em] text-accent/90">
                   Showcase Ready
                 </p>
@@ -163,17 +219,21 @@ const Services = () => {
                   Replace the preview images later with real screenshots from
                   your work for each service.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+          >
             {services.map((service, index) => (
               <motion.article
                 key={service.num}
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.08 * index, duration: 0.45 }}
+                variants={itemVariants}
+                whileHover={{ y: -8 }}
                 className="group overflow-hidden rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.04))] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-500 hover:-translate-y-1 hover:border-accent/45 hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.09),rgba(255,255,255,0.05))] hover:shadow-[0_20px_60px_rgba(56,180,151,0.12)]"
               >
                 <div className="relative h-40 overflow-hidden border-b border-white/10">
@@ -184,9 +244,13 @@ const Services = () => {
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d12]/55 via-[#0f1219]/20 to-transparent" />
-                  <div className="absolute left-4 top-4 inline-flex rounded-full border border-white/15 bg-black/35 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-white/80 backdrop-blur-sm">
+                  <motion.div
+                    animate={{ y: [0, -2, 0] }}
+                    transition={{ duration: 2.4, repeat: Infinity, delay: index * 0.1 }}
+                    className="absolute left-4 top-4 inline-flex rounded-full border border-white/15 bg-black/35 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-white/80 backdrop-blur-sm"
+                  >
                     {service.num}
-                  </div>
+                  </motion.div>
                   <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
                     <div className="max-w-[calc(100%-4.5rem)] rounded-2xl border border-white/12 bg-black/18 px-4 py-2.5 backdrop-blur-sm">
                       <p className="text-[10px] uppercase tracking-[0.28em] text-accent/80">
@@ -203,7 +267,12 @@ const Services = () => {
                       rel="noreferrer"
                       className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/95 text-black shadow-[0_10px_30px_rgba(0,0,0,0.2)] transition-all duration-300 hover:scale-105 hover:border-accent hover:bg-accent"
                     >
-                      <BsArrowUpRight className="text-lg" />
+                      <motion.span
+                        whileHover={{ rotate: 45, scale: 1.05 }}
+                        className="flex"
+                      >
+                        <BsArrowUpRight className="text-lg" />
+                      </motion.span>
                     </Link>
                   </div>
                 </div>
@@ -215,12 +284,13 @@ const Services = () => {
 
                   <div className="mt-3 flex flex-wrap gap-2">
                     {service.stack.map((item) => (
-                      <span
+                      <motion.span
                         key={item}
+                        whileHover={{ y: -2 }}
                         className="rounded-full border border-white/12 bg-white/[0.03] px-3 py-1 text-[11px] font-medium text-white/76"
                       >
                         {item}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
 
@@ -240,7 +310,7 @@ const Services = () => {
                 </div>
               </motion.article>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

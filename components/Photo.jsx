@@ -19,7 +19,7 @@ const Photo = () => {
             opacity: 1,
             transition: { delay: 1.6, duration: 0.4, ease: "easeInOut" },
           }}
-          className="w-[200px] h-[200px] xl:w-[300px] xl:h-[300px] mix-blend-lighten relative mx-auto"
+          className="relative mx-auto h-[200px] w-[200px] mix-blend-lighten xl:h-[300px] xl:w-[300px] 2xl:h-[400px] 2xl:w-[400px]"
         >
           <Image
             src="/assets/Eshana.png"
@@ -33,7 +33,7 @@ const Photo = () => {
 
         {/* Circle */}
         <motion.svg
-          className="w-[210px] xl:w-[310px] h-[210px] xl:h-[310px] absolute top-0 left-1/2 -translate-x-1/2"
+          className="absolute top-0 left-1/2 h-[210px] w-[210px] -translate-x-1/2 xl:h-[310px] xl:w-[310px] 2xl:h-[410px] 2xl:w-[410px]"
           fill="transparent"
           viewBox="0 0 506 506"
           xmlns="http://www.w3.org/2000/svg"

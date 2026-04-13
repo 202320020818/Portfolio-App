@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -75,22 +75,26 @@ const opportunityCards = [
     description:
       "Looking for opportunities to learn from real teams and contribute to meaningful software work.",
     icon: <FaUserGraduate />,
+    value: "Internship Opportunity",
   },
   {
     title: "Entry-Level Roles",
     description:
       "Interested in junior developer pathways that can grow into permanent positions over time.",
     icon: <FaBriefcase />,
+    value: "Junior Developer Role",
   },
   {
     title: "Projects and Freelance",
     description:
       "Open to practical work where I can help build, improve, and support digital solutions.",
     icon: <BsRocketTakeoff />,
+    value: "Freelance Project",
   },
 ];
 
 const Contact = () => {
+  const formRef = useRef(null);
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -109,6 +113,11 @@ const Contact = () => {
 
   const handleSelectChange = (value) => {
     setFormData((prev) => ({ ...prev, service: value }));
+  };
+
+  const handleOpportunityCardClick = (value) => {
+    setFormData((prev) => ({ ...prev, service: value }));
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const handleSubmit = (e) => {
@@ -180,17 +189,30 @@ const Contact = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.08 * index, duration: 0.45 }}
-                    className="rounded-[28px] border border-white/10 bg-white/5 p-5"
+                    className="h-full"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/12 text-xl text-accent">
-                      {card.icon}
-                    </div>
-                    <h2 className="mt-4 text-xl font-semibold text-white">
-                      {card.title}
-                    </h2>
-                    <p className="mt-3 text-sm leading-7 text-white/65">
-                      {card.description}
-                    </p>
+                    <button
+                      type="button"
+                      onClick={() => handleOpportunityCardClick(card.value)}
+                      className={`flex h-full w-full flex-col rounded-[28px] border p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-accent/10 hover:shadow-[0_20px_50px_rgba(56,180,151,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 ${
+                        formData.service === card.value
+                          ? "border-accent/45 bg-accent/12"
+                          : "border-white/10 bg-white/5"
+                      }`}
+                    >
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/12 text-xl text-accent">
+                        {card.icon}
+                      </div>
+                      <h2 className="mt-4 text-xl font-semibold text-white">
+                        {card.title}
+                      </h2>
+                      <p className="mt-3 text-sm leading-7 text-white/65">
+                        {card.description}
+                      </p>
+                      <span className="mt-4 text-xs uppercase tracking-[0.28em] text-accent/85">
+                        Choose and continue
+                      </span>
+                    </button>
                   </motion.div>
                 ))}
               </div>
@@ -219,6 +241,7 @@ const Contact = () => {
 
             <div className="p-6 sm:p-8">
               <motion.div
+                ref={formRef}
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.12, duration: 0.5 }}
