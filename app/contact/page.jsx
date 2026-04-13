@@ -245,7 +245,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.12, duration: 0.5 }}
-                className="rounded-[32px] border border-white/10 bg-white/5 p-6"
+                className="rounded-[32px] border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:bg-white/[0.07] hover:shadow-[0_20px_60px_rgba(56,180,151,0.10)]"
               >
                 <p className="text-xs uppercase tracking-[0.3em] text-accent/80">
                   Send Opportunity
@@ -281,7 +281,7 @@ const Contact = () => {
                       placeholder="First name"
                       onChange={handleChange}
                       required
-                      className="rounded-2xl"
+                      className="rounded-2xl transition-all duration-300 hover:border-accent/35 focus:border-accent/50"
                     />
                     <Input
                       name="lastname"
@@ -289,7 +289,7 @@ const Contact = () => {
                       placeholder="Last name"
                       onChange={handleChange}
                       required
-                      className="rounded-2xl"
+                      className="rounded-2xl transition-all duration-300 hover:border-accent/35 focus:border-accent/50"
                     />
                     <Input
                       name="email"
@@ -298,7 +298,7 @@ const Contact = () => {
                       placeholder="Email address"
                       onChange={handleChange}
                       required
-                      className="rounded-2xl"
+                      className="rounded-2xl transition-all duration-300 hover:border-accent/35 focus:border-accent/50"
                     />
                     <Input
                       name="phone"
@@ -306,7 +306,7 @@ const Contact = () => {
                       value={formData.phone}
                       placeholder="Phone number"
                       onChange={handleChange}
-                      className="rounded-2xl"
+                      className="rounded-2xl transition-all duration-300 hover:border-accent/35 focus:border-accent/50"
                     />
                   </div>
 
@@ -314,7 +314,7 @@ const Contact = () => {
                     onValueChange={handleSelectChange}
                     value={formData.service}
                   >
-                    <SelectTrigger className="h-[54px] w-full rounded-2xl border border-white/10 bg-primary px-4 text-white/60">
+                    <SelectTrigger className="h-[54px] w-full rounded-2xl border border-white/10 bg-primary px-4 text-white/60 transition-all duration-300 hover:border-accent/35 focus:border-accent/50">
                       <SelectValue placeholder="Select opportunity type" />
                     </SelectTrigger>
 
@@ -335,7 +335,7 @@ const Contact = () => {
                   <Textarea
                     name="message"
                     value={formData.message}
-                    className="h-[170px] rounded-2xl"
+                    className="h-[170px] rounded-2xl transition-all duration-300 hover:border-accent/35 focus:border-accent/50"
                     placeholder="Tell me about the role, company, project, or collaboration..."
                     onChange={handleChange}
                     required
@@ -348,7 +348,7 @@ const Contact = () => {
 
                     <Button
                       type="submit"
-                      className="h-12 w-full rounded-full bg-accent px-8 text-primary sm:w-auto"
+                      className="h-12 w-full rounded-full bg-accent px-8 text-primary transition-all duration-300 hover:scale-[1.03] hover:bg-accent/90 sm:w-auto"
                     >
                       Send Opportunity
                     </Button>
@@ -361,7 +361,7 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.18, duration: 0.45 }}
-                  className="rounded-[30px] border border-white/10 bg-gradient-to-br from-accent/18 via-white/5 to-transparent p-6"
+                  className="rounded-[30px] border border-white/10 bg-gradient-to-br from-accent/18 via-white/5 to-transparent p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/35"
                 >
                   <p className="text-xs uppercase tracking-[0.3em] text-accent/85">
                     Quick Connect
@@ -391,7 +391,7 @@ const Contact = () => {
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.22 + index * 0.07, duration: 0.45 }}
-                    className="rounded-[30px] border border-white/10 bg-white/5 p-5"
+                    className="rounded-[30px] border border-white/10 bg-white/5 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:bg-white/[0.07]"
                   >
                     <div className="flex items-start gap-4">
                       <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent/12 text-xl text-accent">
