@@ -32,14 +32,15 @@ const educationItems = [
     title: "BSc (Hons) in Information Technology - SLIIT",
     period: "May 2023 - Present",
     subtitle: "Undergraduate",
-    detail: "Specializing in Information Technology and strengthening full-stack development skills.",
+    detail:
+      "Specializing in Information Technology and strengthening full-stack development skills.",
   },
 ];
 
 const skillGroups = [
   {
     title: "Frontend",
-    items: ["HTML", "CSS", "JavaScript", "React", "Next.js"],
+    items: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS"],
   },
   {
     title: "Backend",
@@ -47,11 +48,27 @@ const skillGroups = [
   },
   {
     title: "Mobile and Languages",
-    items: ["Java", "Kotlin", "SQL", "MongoDB"],
+    items: ["Java", "Kotlin", "TypeScript", "Python"],
+  },
+  {
+    title: "Databases",
+    items: ["MySQL", "PostgreSQL", "Oracle", "SQL", "MongoDB", "Neon"],
   },
   {
     title: "Tools and Platforms",
-    items: ["Git", "Firebase", "Clerk", "Neon", "AWS", "VS Code", "IntelliJ IDEA", "Android Studio"],
+    items: [
+      "Git",
+      "Firebase",
+      "Clerk",
+      "AWS",
+      "Azure",
+      "Redux",
+      "Prisma",
+      "VS Code",
+      "IntelliJ IDEA",
+      "Android Studio",
+      "PyCharm",
+    ],
   },
 ];
 
@@ -95,9 +112,9 @@ export default function Resume() {
                 <span className="block text-accent">Harshana</span>
               </h1>
               <p className="mt-4 max-w-sm text-sm leading-7 text-white/70">
-                Information Technology undergraduate focused on building elegant,
-                scalable web and mobile experiences with a calm, disciplined,
-                problem-solving mindset.
+                Information Technology undergraduate focused on building
+                elegant, scalable web and mobile experiences with a calm,
+                disciplined, problem-solving mindset.
               </p>
             </div>
 
@@ -185,7 +202,8 @@ export default function Resume() {
                     }`}
                   >
                     <span className="block text-xs uppercase tracking-[0.25em]">
-                      0{sections.findIndex((item) => item.id === section.id) + 1}
+                      0
+                      {sections.findIndex((item) => item.id === section.id) + 1}
                     </span>
                     <span className="mt-2 block text-base font-semibold">
                       {section.label}
@@ -259,7 +277,11 @@ export default function Resume() {
               )}
 
               {activeSection === "education" && (
-                <motion.div key="education" {...sectionMotion} className="space-y-5">
+                <motion.div
+                  key="education"
+                  {...sectionMotion}
+                  className="space-y-5"
+                >
                   {educationItems.map((item, index) => (
                     <motion.div
                       key={`${item.title}-${item.period}`}
