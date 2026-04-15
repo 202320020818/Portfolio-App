@@ -32,8 +32,7 @@ const educationItems = [
     title: "BSc (Hons) in Information Technology - SLIIT",
     period: "May 2023 - Present",
     subtitle: "Undergraduate",
-    detail:
-      "Specializing in Information Technology and strengthening full-stack development skills.",
+    detail: "Specializing in Information Technology",
   },
 ];
 
